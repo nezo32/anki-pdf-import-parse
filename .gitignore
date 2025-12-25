@@ -6,3 +6,4 @@ files
 .vscode
 .env
 .env.local
+*.exe

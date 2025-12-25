@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { YankiConnect } from "yanki-connect";
 import PDFParser from "pdf2json";
 import OpenAI from "openai";
@@ -53,4 +55,6 @@ parser.on("pdfParser_dataReady", async (data) => {
 //parser.loadPDF("Vocab_N5.pdf");
 //await parser.loadPDF("Vocab_N4.pdf");
 //await parser.loadPDF("Vocab_N3.pdf");
-await parser.loadPDF("Vocab_N2.pdf");
+(async function () {
+  await parser.loadPDF(file);
+})();

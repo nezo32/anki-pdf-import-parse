@@ -7,15 +7,18 @@
   "author": {
     "name": "nezo"
   },
-  "type": "module",
   "license": "MIT",
+  "bin": {
+    "anki-pfd-parser": "dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsx --watch src/index.ts",
     "start": "node ./dist/index.js",
     "build:start": "npm run build && npm run start",
     "lint": "tslint -c tslint.json src/**/*.ts",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "build:exe": "bun build ./src/index.ts --compile --outfile anki-pfd-parser"
   },
   "dependencies": {
     "cli-progress": "^3.12.0",
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@types/cli-progress": "^3.11.6",
     "@types/node": "^25.0.3",
+    "bun": "latest",
     "tsx": "^4.21.0"
   }
 }

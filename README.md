@@ -1,6 +1,6 @@
 # Anki PDF Parser
 
-A Node.js application that automatically converts PDF documents into Anki flashcard decks. Perfect for creating study materials from PDFs, with AI-powered card refinement using DeepSeek.
+A Node.js application that automatically converts PDF documents ([listed here](https://jvocab.com/#pdf)) into Anki flashcard decks. Perfect for creating study materials from PDFs, with AI-powered card refinement using DeepSeek.
 
 ## Features
 
@@ -48,11 +48,66 @@ DEEPSEEK_API_KEY=your_deepseek_api_key_here
 npm run build
 ```
 
-## Usage
+## Using the Compiled Executable
+
+Pre-compiled executables are available for Windows, macOS, and Linux. Download the appropriate executable for your platform from the [Releases](https://github.com/nezo32/anki-pdf-import-parse/releases) page.
+
+### Setup
+
+Before running the executable, create a `.env` file in the same directory as the executable:
+
+```env
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
+```
+
+### Running on Windows
+
+```cmd
+anki-pfd-parser-win.exe "path\to\your\file.pdf"
+```
+
+Example:
+
+```cmd
+anki-pfd-parser-win.exe "C:\Users\YourName\Documents\Vocab_N2.pdf"
+```
+
+### Running on macOS
+
+```bash
+chmod +x anki-pfd-parser-macos
+./anki-pfd-parser-macos "/path/to/your/file.pdf"
+```
+
+For Apple Silicon (M1/M2/M3) Macs:
+
+```bash
+chmod +x anki-pfd-parser-macos-arm64
+./anki-pfd-parser-macos-arm64 "/path/to/your/file.pdf"
+```
+
+### Running on Linux
+
+```bash
+chmod +x anki-pfd-parser-linux
+./anki-pfd-parser-linux "/path/to/your/file.pdf"
+```
+
+**Requirements for executable usage:**
+
+- **Anki**: Must be running with AnkiConnect add-on installed
+- **DeepSeek API Key**: Required in the `.env` file
+- **PDF File**: Valid path to the PDF file to parse
+
+## Usage (Development)
+
+Using the npm development environment:
 
 1. **Start Anki** with AnkiConnect running (it runs automatically when Anki is open)
 
-2. **Run the parser** with a PDF file:
+2. **Ensure your `.env` file is set up** in the project root with your DeepSeek API key
+
+3. **Run the parser** with a PDF file:
 
 ```bash
 npm run start <path-to-pdf>
@@ -64,7 +119,7 @@ Example:
 npm run start ./Vocab_N2.pdf
 ```
 
-3. The application will:
+4. The application will:
    - Parse the PDF and extract text
    - Create or use an existing Anki deck (named from PDF title)
    - Process text through DeepSeek AI for formatting
