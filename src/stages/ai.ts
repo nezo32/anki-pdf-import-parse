@@ -19,10 +19,12 @@ export async function useAI({
         messages: [
           {
             role: "system",
-            content:
-              "You will get the russian text, you need to add spaces, nothing more, just the spaces between words and after commas",
+            content: `You are a text formatter. The input is in Russian. Your ONLY task is to add spaces between words and after commas. Return ONLY the corrected text. Do not explain, do not add any instructions or messages.`,
           },
-          { role: "user", content: item.back },
+          {
+            role: "user",
+            content: `Format this Russian text by adding spaces between words and after commas: ${item.back}`,
+          },
         ],
         model: "deepseek-chat",
       });
